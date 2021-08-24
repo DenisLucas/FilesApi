@@ -10,9 +10,8 @@ namespace File.Core.Maps.File
     {
         public ModelViewFilesMapper()
         {
-            CreateMap<ModelViewFiles,Files>();
-            
             CreateMap<Files,ModelViewFiles>(); 
+            CreateMap<ModelViewFiles, Files>();
         }
     }
 }

@@ -1,8 +1,12 @@
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
 using File.Core.File.Command;
+using File.Core.File.Query;
 using File.Domain.ModelVIews;
 using File.Util.Helpers;
 using MediatR;
@@ -15,7 +19,6 @@ namespace File.Api.Controllers.File
     [Route("api/[controller]")]
     public class FileController : ControllerBase
     {
-        public static IWebHostEnvironment _environment;
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         private readonly UrlHelper _urlHelper;
@@ -23,25 +26,31 @@ namespace File.Api.Controllers.File
         {
             _mapper = mapper;
             _mediator = mediator;
-            _environment = environment;
             _urlHelper = urlHelper;
         }
 
 
 
         [HttpPost("upload")]
-        public async Task<IActionResult> uploadVideo([FromForm] FileUploadCommand arquivo)
+        public async Task<IActionResult> uploadFile([FromForm] FileUploadCommand file)
         {
-            if (arquivo.File.Length > 0)
+            if (file.File.Length > 0)
             {
             
-                var command = await _mediator.Send(arquivo);
-                var file = _mapper.Map<ModelViewFiles>(command);
+                var command = await _mediator.Send(file);
+                var mappedfile = _mapper.Map<ModelViewFiles>(command);
                 var url = _urlHelper.getUri(command.Id.ToString()); 
-                return Created(url,file);
+                return Created(url,mappedfile);
             }
+            return BadRequest();   
+        }
+        [HttpGet("download/{id}")]
+        public async Task<IActionResult> downloadFile(int id)
+        {
+            var query = new FileDownloadQuery(id);
+            var file = await _mediator.Send(query);
+            if (file != null) return File(file, "application/octet-stream");
             return BadRequest();
-            
         }
     }
 }
