@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using File.Core.File.Command;
+using File.Core.File.Query;
 using File.Domain.Entities;
 using File.Domain.ViewModel;
 using File.Infrastructure;

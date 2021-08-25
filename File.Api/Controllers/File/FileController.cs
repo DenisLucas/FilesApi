@@ -1,4 +1,5 @@
 
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using File.Core.File.Command;
@@ -32,7 +33,12 @@ namespace File.Api.Controllers.File
         {
             if (file.File.Length > 0)
             {
-            
+                var validate = new FileUploadCommandValidator();
+                var validated = await validate.ValidateAsync(file);
+                if (!validated.IsValid)
+                {
+                    return BadRequest(validated.Errors.FirstOrDefault());
+                }
                 var command = await _mediator.Send(file);
                 var mappedfile = _mapper.Map<ViewModelFiles>(command);
                 var url = _urlHelper.getUri(command.Id.ToString()); 
@@ -43,7 +49,14 @@ namespace File.Api.Controllers.File
         [HttpGet("download/{id}")]
         public async Task<IActionResult> downloadFile(int id)
         {
+
             var query = new FileDownloadQuery(id);
+            var validate = new FileDownloadQueryValidator();
+            var validated = await validate.ValidateAsync(query);
+            if (!validated.IsValid)
+            {
+                return BadRequest(validated.Errors.FirstOrDefault());
+            } 
             var file = await _mediator.Send(query);
             if (file != null) return File(file, "application/octet-stream");
             return BadRequest();
@@ -59,11 +72,17 @@ namespace File.Api.Controllers.File
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> editFile(int id, [FromForm] FileEditCommand commandId)
+        public async Task<IActionResult> editFile(int id, [FromForm] FileEditCommand file)
         {    
-            var command = new FileEditCommandId(id,commandId);
-            var file = await _mediator.Send(command);
-            if (file != null) return Ok(file);
+            var validate = new FileEditCommandValidator();
+            var validated = await validate.ValidateAsync(file);
+            if (!validated.IsValid)
+            {
+                return BadRequest(validated.Errors.FirstOrDefault());
+            }
+            var command = new FileEditCommandId(id,file);
+            var fileM = await _mediator.Send(command);
+            if (fileM != null) return Ok(fileM);
             return BadRequest();
         }
 
