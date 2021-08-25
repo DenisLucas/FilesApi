@@ -1,13 +1,9 @@
-using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
+
 using System.Threading.Tasks;
 using AutoMapper;
 using File.Core.File.Command;
 using File.Core.File.Query;
-using File.Domain.ModelVIews;
+using File.Domain.ViewModel;
 using File.Util.Helpers;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +34,7 @@ namespace File.Api.Controllers.File
             {
             
                 var command = await _mediator.Send(file);
-                var mappedfile = _mapper.Map<ModelViewFiles>(command);
+                var mappedfile = _mapper.Map<ViewModelFiles>(command);
                 var url = _urlHelper.getUri(command.Id.ToString()); 
                 return Created(url,mappedfile);
             }
@@ -52,5 +48,25 @@ namespace File.Api.Controllers.File
             if (file != null) return File(file, "application/octet-stream");
             return BadRequest();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> deleteFile(int id)
+        {
+            var command = new FileDeleteCommand(id);
+            var file = await _mediator.Send(command);
+            if (file) return Ok();
+            return BadRequest();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> editFile(int id, [FromForm] FileEditCommand commandId)
+        {    
+            var command = new FileEditCommandId(id,commandId);
+            var file = await _mediator.Send(command);
+            if (file != null) return Ok(file);
+            return BadRequest();
+        }
+
+
     }
 }

@@ -28,7 +28,7 @@ namespace File.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.InstallServicesInAssembly(Configuration);
-            var assembly = AppDomain.CurrentDomain.Load("File.Core");
+            var assembly = AppDomain.CurrentDomain.Load("File.Domain");
             
             services.AddAutoMapper(assembly);
         }

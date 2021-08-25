@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wG3a8O1/UNXHcGjH7VokfBNizLsdfgYD+KLy1SK864/COukppFI3FowFGzpud7Kckqg5qiPWhDiOIK3tGSXo/Q==",
+  "dgSpecHash": "+5PCWx6JN5ZFnE7sl/qUaTqFYIZQqa5tlEL54jYo1sQDPHPnPgsd9+JwjruADjTBJNw5qm62wRRhEp7BNtkf4g==",
   "success": true,
   "projectFilePath": "/home/denis/Downloads/FileUploadApi/File.Infrastructure/File.Infrastructure.csproj",
   "expectedPackageFiles": [
-    "/home/denis/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/home/denis/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/home/denis/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/denis/.nuget/packages/microsoft.data.sqlclient/2.0.1/microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "/home/denis/.nuget/packages/microsoft.data.sqlclient.sni.runtime/2.0.1/microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
     "/home/denis/.nuget/packages/microsoft.entityframeworkcore/5.0.9/microsoft.entityframeworkcore.5.0.9.nupkg.sha512",
@@ -63,7 +64,7 @@
     "/home/denis/.nuget/packages/system.private.datacontractserialization/4.3.0/system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "/home/denis/.nuget/packages/system.private.uri/4.3.2/system.private.uri.4.3.2.nupkg.sha512",
     "/home/denis/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
-    "/home/denis/.nuget/packages/system.reflection.emit/4.3.0/system.reflection.emit.4.3.0.nupkg.sha512",
+    "/home/denis/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/home/denis/.nuget/packages/system.reflection.emit.ilgeneration/4.3.0/system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "/home/denis/.nuget/packages/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "/home/denis/.nuget/packages/system.reflection.extensions/4.3.0/system.reflection.extensions.4.3.0.nupkg.sha512",

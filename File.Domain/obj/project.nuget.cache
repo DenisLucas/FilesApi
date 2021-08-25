@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/G4A7plNbFpCqXqc6hf2Q3rmOCIYd/ugEY7Y/istRF/kKVJ0Lk61/MfTwMIXQhMCxaE6q/aMRjDtisIBb99c5w==",
+  "dgSpecHash": "gHTfwof2Um/rVlbNy6itDCXsYfnh5GefzhWJE3rv3Wv8+1zPXg9v3JmfuTFbICr0l8Hl3p2e28F5Et2gNnfJ2g==",
   "success": true,
   "projectFilePath": "/home/denis/Downloads/FileUploadApi/File.Domain/File.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/denis/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/home/denis/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/home/denis/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
